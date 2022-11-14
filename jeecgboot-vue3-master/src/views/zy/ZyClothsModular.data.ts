@@ -22,7 +22,7 @@ export const columns: BasicColumn[] = [
    {
     title: '服装类型id',
     align:"center",
-    dataIndex: 'clothsTypeId'
+    dataIndex: 'clothsTypeId_dictText'
    },
    {
     title: '部位',
@@ -37,17 +37,8 @@ export const columns: BasicColumn[] = [
    {
     title: '图片地址',
     align:"center",
-    dataIndex: 'pictureUrl'
-   },
-   {
-    title: '创建时间',
-    align:"center",
-    dataIndex: 'createTime'
-   },
-   {
-    title: '更新时间',
-    align:"center",
-    dataIndex: 'updateTime'
+    dataIndex: 'pictureUrl',
+    customRender:render.renderImage,
    },
 ];
 //查询数据
@@ -73,7 +64,10 @@ export const formSchema: FormSchema[] = [
   {
     label: '服装类型id',
     field: 'clothsTypeId',
-    component: 'Input',
+    component: 'JSearchSelect',
+    componentProps:{
+       dict:"zy_cloths_type,nums,id"
+    },
   },
   {
     label: '部位',
@@ -88,25 +82,9 @@ export const formSchema: FormSchema[] = [
   {
     label: '图片地址',
     field: 'pictureUrl',
-    component: 'Input',
-  },
-  {
-    label: '创建时间',
-    field: 'createTime',
-    component: 'DatePicker',
-    componentProps: {
-       showTime: true,
-       valueFormat: 'YYYY-MM-DD HH:mm:ss'
-     },
-  },
-  {
-    label: '更新时间',
-    field: 'updateTime',
-    component: 'DatePicker',
-    componentProps: {
-       showTime: true,
-       valueFormat: 'YYYY-MM-DD HH:mm:ss'
-     },
+     component: 'JImageUpload',
+     componentProps:{
+      },
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

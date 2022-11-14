@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 制衣模块表
  * @Author: jeecg-boot
- * @Date:   2022-11-06
+ * @Date:   2022-11-14
  * @Version: V1.0
  */
 @Data
@@ -57,7 +57,8 @@ public class ZyClothsModular implements Serializable {
     @ApiModelProperty(value = "描述")
     private java.lang.String description;
 	/**服装类型id*/
-	@Excel(name = "服装类型id", width = 15)
+	@Excel(name = "服装类型id", width = 15, dictTable = "zy_cloths_type", dicText = "nums", dicCode = "id")
+	@Dict(dictTable = "zy_cloths_type", dicText = "nums", dicCode = "id")
     @ApiModelProperty(value = "服装类型id")
     private java.lang.String clothsTypeId;
 	/**部位*/

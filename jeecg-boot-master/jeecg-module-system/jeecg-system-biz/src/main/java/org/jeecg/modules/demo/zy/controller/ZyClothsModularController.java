@@ -39,7 +39,7 @@ import org.jeecg.common.aspect.annotation.AutoLog;
  /**
  * @Description: 制衣模块表
  * @Author: jeecg-boot
- * @Date:   2022-11-06
+ * @Date:   2022-11-14
  * @Version: V1.0
  */
 @Api(tags="制衣模块表")
