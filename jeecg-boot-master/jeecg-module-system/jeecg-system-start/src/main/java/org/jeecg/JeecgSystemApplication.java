@@ -42,5 +42,4 @@ public class JeecgSystemApplication extends SpringBootServletInitializer {
                 "----------------------------------------------------------");
 
     }
-
 }

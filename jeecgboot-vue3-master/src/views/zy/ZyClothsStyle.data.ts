@@ -12,7 +12,7 @@ export const columns: BasicColumn[] = [
    {
     title: '形式',
     align:"center",
-    dataIndex: 'shape'
+    dataIndex: 'shape_dictText'
    },
    {
     title: '编号',
@@ -30,95 +30,76 @@ export const columns: BasicColumn[] = [
     dataIndex: 'specification'
    },
    {
-    title: '销售地区',
-    align:"center",
-    dataIndex: 'salesTerritory'
-   },
-   {
-    title: '产品概述',
-    align:"center",
-    dataIndex: 'productOverview'
-   },
-   {
-    title: '结构',
-    align:"center",
-    dataIndex: 'structure'
-   },
-   {
-    title: '特征',
-    align:"center",
-    dataIndex: 'characteristic'
-   },
-   {
-    title: '效果图',
-    align:"center",
-    dataIndex: 'designSketch'
-   },
-   {
-    title: '主图',
-    align:"center",
-    dataIndex: 'mainMap'
-   },
-   {
-    title: '测量方法',
-    align:"center",
-    dataIndex: 'measuringMethod'
-   },
-   {
-    title: '误差',
-    align:"center",
-    dataIndex: 'error'
-   },
-   {
-    title: '定额用料',
-    align:"center",
-    dataIndex: 'quotaMaterials'
-   },
-   {
-    title: '折叠搭配及包装',
-    align:"center",
-    dataIndex: 'foldingPackaging'
-   },
-   {
-    title: '配件及标志',
-    align:"center",
-    dataIndex: 'accLogos'
-   },
-   {
-    title: '缝纫形式',
-    align:"center",
-    dataIndex: 'sewingForm'
-   },
-   {
     title: '企业id',
     align:"center",
     dataIndex: 'enterpriseId'
    },
-   {
-    title: '创建时间',
-    align:"center",
-    dataIndex: 'createTime'
-   },
-   {
-    title: '更新时间',
-    align:"center",
-    dataIndex: 'updateTime'
-   },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
+	{
+      label: "形式",
+      field: 'shape',
+      component: 'JDictSelectTag',
+      componentProps:{
+          dictCode:"style_shape"
+      },
+      colProps: {span: 6},
+ 	},
+	{
+      label: "编号",
+      field: 'nums',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
+	{
+      label: "名称",
+      field: 'styleNames',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
+	{
+      label: "规格",
+      field: 'specification',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
+	{
+      label: "企业id",
+      field: 'enterpriseId',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
   {
     label: '服装类型id',
     field: 'clothsTypeId',
-    component: 'Input',
+    component: 'JPopup',
+    componentProps: ({ formActionType }) => {
+        const {setFieldsValue} = formActionType;
+        return{
+            setFieldsValue:setFieldsValue,
+            code:"cloths_type",
+            fieldConfig: [
+                { source: 'nums', target: 'nums' },
+                { source: 'type_name', target: 'type_name' },
+                { source: 'enterprise_id', target: 'enterprise_id' },
+                { source: 'pid', target: 'pid' },
+            ],
+            multi:true
+        }
+    },
+
   },
   {
     label: '形式',
     field: 'shape',
-    component: 'InputNumber',
+    component: 'JDictSelectTag',
+    componentProps:{
+        dictCode:"style_shape"
+     },
     dynamicRules: ({model,schema}) => {
           return [
                  { required: true, message: '请输入形式!'},
@@ -153,12 +134,12 @@ export const formSchema: FormSchema[] = [
   {
     label: '销售地区',
     field: 'salesTerritory',
-    component: 'Input',
+    component: 'InputTextArea',
   },
   {
     label: '产品概述',
     field: 'productOverview',
-    component: 'Input',
+    component: 'InputTextArea',
   },
   {
     label: '结构',
@@ -173,12 +154,16 @@ export const formSchema: FormSchema[] = [
   {
     label: '效果图',
     field: 'designSketch',
-    component: 'Input',
+     component: 'JImageUpload',
+     componentProps:{
+      },
   },
   {
     label: '主图',
     field: 'mainMap',
-    component: 'Input',
+     component: 'JImageUpload',
+     componentProps:{
+      },
   },
   {
     label: '测量方法',
@@ -198,40 +183,22 @@ export const formSchema: FormSchema[] = [
   {
     label: '折叠搭配及包装',
     field: 'foldingPackaging',
-    component: 'Input',
+    component: 'InputTextArea',
   },
   {
     label: '配件及标志',
     field: 'accLogos',
-    component: 'Input',
+    component: 'InputTextArea',
   },
   {
     label: '缝纫形式',
     field: 'sewingForm',
-    component: 'Input',
+    component: 'InputTextArea',
   },
   {
     label: '企业id',
     field: 'enterpriseId',
     component: 'Input',
-  },
-  {
-    label: '创建时间',
-    field: 'createTime',
-    component: 'DatePicker',
-    componentProps: {
-       showTime: true,
-       valueFormat: 'YYYY-MM-DD HH:mm:ss'
-     },
-  },
-  {
-    label: '更新时间',
-    field: 'updateTime',
-    component: 'DatePicker',
-    componentProps: {
-       showTime: true,
-       valueFormat: 'YYYY-MM-DD HH:mm:ss'
-     },
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

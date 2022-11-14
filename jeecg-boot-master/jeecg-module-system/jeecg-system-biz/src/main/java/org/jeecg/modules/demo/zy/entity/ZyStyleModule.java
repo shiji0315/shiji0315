@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 款式模块表
  * @Author: jeecg-boot
- * @Date:   2022-11-06
+ * @Date:   2022-11-12
  * @Version: V1.0
  */
 @Data
@@ -50,15 +50,18 @@ public class ZyStyleModule implements Serializable {
     @ApiModelProperty(value = "所属部门")
     private java.lang.String sysOrgCode;
 	/**服装类型id*/
-	@Excel(name = "服装类型id", width = 15)
+	@Excel(name = "服装类型id", width = 15, dictTable = "zy_cloths_type", dicText = "nums", dicCode = "id")
+	@Dict(dictTable = "zy_cloths_type", dicText = "nums", dicCode = "id")
     @ApiModelProperty(value = "服装类型id")
     private java.lang.String clothsTypeId;
 	/**款式id*/
-	@Excel(name = "款式id", width = 15)
+	@Excel(name = "款式id", width = 15, dictTable = "zy_cloths_style", dicText = "style_names", dicCode = "id")
+	@Dict(dictTable = "zy_cloths_style", dicText = "style_names", dicCode = "id")
     @ApiModelProperty(value = "款式id")
     private java.lang.String styleId;
 	/**模块id*/
-	@Excel(name = "模块id", width = 15)
+	@Excel(name = "模块id", width = 15, dictTable = "zy_cloths_modular", dicText = "modular_name", dicCode = "id")
+	@Dict(dictTable = "zy_cloths_modular", dicText = "modular_name", dicCode = "id")
     @ApiModelProperty(value = "模块id")
     private java.lang.String modularId;
 	/**创建时间*/

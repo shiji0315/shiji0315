@@ -7,7 +7,7 @@ export const columns: BasicColumn[] = [
    {
     title: '父类ID',
     align:"center",
-    dataIndex: 'typeId'
+    dataIndex: 'pid_dictText'
    },
    {
     title: '编号',
@@ -37,13 +37,35 @@ export const columns: BasicColumn[] = [
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
+	{
+      label: "编号",
+      field: 'nums',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
+	{
+      label: "类型名称",
+      field: 'typeName',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
+	{
+      label: "企业id",
+      field: 'enterpriseId',
+      component: 'Input',
+      colProps: {span: 6},
+ 	},
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
   {
     label: '父类ID',
-    field: 'typeId',
-    component: 'Input',
+    field: 'pid',
+    component: 'JTreeSelect',
+    componentProps:{
+        dict:"zy_cloths_type,nums,id",
+        pidValue:"",
+    },
   },
   {
     label: '编号',
@@ -69,24 +91,6 @@ export const formSchema: FormSchema[] = [
     label: '企业id',
     field: 'enterpriseId',
     component: 'Input',
-  },
-  {
-    label: '创建时间',
-    field: 'createTime',
-    component: 'DatePicker',
-    componentProps: {
-       showTime: true,
-       valueFormat: 'YYYY-MM-DD HH:mm:ss'
-     },
-  },
-  {
-    label: '更新时间',
-    field: 'updateTime',
-    component: 'DatePicker',
-    componentProps: {
-       showTime: true,
-       valueFormat: 'YYYY-MM-DD HH:mm:ss'
-     },
   },
 	// TODO 主键隐藏字段，目前写死为ID
 	{

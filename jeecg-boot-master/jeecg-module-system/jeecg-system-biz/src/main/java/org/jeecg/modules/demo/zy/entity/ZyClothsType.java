@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 服装类型表
  * @Author: jeecg-boot
- * @Date:   2022-11-06
+ * @Date:   2022-11-12
  * @Version: V1.0
  */
 @Data
@@ -36,9 +36,10 @@ public class ZyClothsType implements Serializable {
     @ApiModelProperty(value = "主键")
     private java.lang.String id;
 	/**父类ID*/
-	@Excel(name = "父类ID", width = 15)
+	@Excel(name = "父类ID", width = 15, dictTable = "zy_cloths_type", dicText = "nums", dicCode = "id")
+	@Dict(dictTable = "zy_cloths_type", dicText = "nums", dicCode = "id")
     @ApiModelProperty(value = "父类ID")
-    private java.lang.String typeId;
+    private java.lang.String pid;
 	/**编号*/
 	@Excel(name = "编号", width = 15)
     @ApiModelProperty(value = "编号")
@@ -61,4 +62,9 @@ public class ZyClothsType implements Serializable {
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     @ApiModelProperty(value = "更新时间")
     private java.util.Date updateTime;
+	/**是否有子节点*/
+	@Excel(name = "是否有子节点", width = 15, dicCode = "yn")
+	@Dict(dicCode = "yn")
+    @ApiModelProperty(value = "是否有子节点")
+    private java.lang.String hasChild;
 }

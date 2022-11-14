@@ -20,7 +20,7 @@ import lombok.experimental.Accessors;
 /**
  * @Description: 服装款式表
  * @Author: jeecg-boot
- * @Date:   2022-11-06
+ * @Date:   2022-11-12
  * @Version: V1.0
  */
 @Data
@@ -46,7 +46,8 @@ public class ZyClothsStyle implements Serializable {
     @ApiModelProperty(value = "服装类型id")
     private java.lang.String clothsTypeId;
 	/**形式*/
-	@Excel(name = "形式", width = 15)
+	@Excel(name = "形式", width = 15, dicCode = "style_shape")
+	@Dict(dicCode = "style_shape")
     @ApiModelProperty(value = "形式")
     private java.lang.Integer shape;
 	/**编号*/

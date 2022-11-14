@@ -7,17 +7,17 @@ export const columns: BasicColumn[] = [
    {
     title: '服装类型id',
     align:"center",
-    dataIndex: 'clothsTypeId'
+    dataIndex: 'clothsTypeId_dictText'
    },
    {
     title: '款式id',
     align:"center",
-    dataIndex: 'styleId'
+    dataIndex: 'styleId_dictText'
    },
    {
     title: '模块id',
     align:"center",
-    dataIndex: 'modularId'
+    dataIndex: 'modularId_dictText'
    },
    {
     title: '创建时间',
@@ -27,23 +27,59 @@ export const columns: BasicColumn[] = [
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
+	{
+      label: "服装类型id",
+      field: 'clothsTypeId',
+      component: 'JSearchSelect',
+      componentProps:{
+         dict:"zy_cloths_type,nums,id"
+      },
+      colProps: {span: 6},
+ 	},
+	{
+      label: "款式id",
+      field: 'styleId',
+      component: 'JSearchSelect',
+      componentProps:{
+         dict:"zy_cloths_style,style_names,id"
+      },
+      colProps: {span: 6},
+ 	},
+	{
+      label: "模块id",
+      field: 'modularId',
+      component: 'JSearchSelect',
+      componentProps:{
+         dict:"zy_cloths_modular,modular_name,id"
+      },
+      colProps: {span: 6},
+ 	},
 ];
 //表单数据
 export const formSchema: FormSchema[] = [
   {
     label: '服装类型id',
     field: 'clothsTypeId',
-    component: 'Input',
+    component: 'JSearchSelect',
+    componentProps:{
+       dict:"zy_cloths_type,nums,id"
+    },
   },
   {
     label: '款式id',
     field: 'styleId',
-    component: 'Input',
+    component: 'JSearchSelect',
+    componentProps:{
+       dict:"zy_cloths_style,style_names,id"
+    },
   },
   {
     label: '模块id',
     field: 'modularId',
-    component: 'Input',
+    component: 'JSearchSelect',
+    componentProps:{
+       dict:"zy_cloths_modular,modular_name,id"
+    },
   },
   {
     label: '创建时间',
