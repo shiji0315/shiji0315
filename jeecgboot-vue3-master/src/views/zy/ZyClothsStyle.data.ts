@@ -1,130 +1,118 @@
-import {BasicColumn} from '/@/components/Table';
-import {FormSchema} from '/@/components/Table';
-import { rules} from '/@/utils/helper/validator';
+import { BasicColumn } from '/@/components/Table';
+import { FormSchema } from '/@/components/Table';
+import { rules } from '/@/utils/helper/validator';
 import { render } from '/@/utils/common/renderUtils';
 //列表数据
 export const columns: BasicColumn[] = [
-   {
+  {
     title: '服装类型id',
-    align:"center",
-    dataIndex: 'clothsTypeId'
-   },
-   {
+    align: 'center',
+    dataIndex: 'clothstypeid',
+  },
+  {
     title: '形式',
-    align:"center",
-    dataIndex: 'shape_dictText'
-   },
-   {
+    align: 'center',
+    dataIndex: 'shape_dictText',
+  },
+  {
     title: '编号',
-    align:"center",
-    dataIndex: 'nums'
-   },
-   {
+    align: 'center',
+    dataIndex: 'nums',
+  },
+  {
     title: '名称',
-    align:"center",
-    dataIndex: 'styleNames'
-   },
-   {
+    align: 'center',
+    dataIndex: 'styleNames',
+  },
+  {
     title: '规格',
-    align:"center",
-    dataIndex: 'specification'
-   },
-   {
+    align: 'center',
+    dataIndex: 'specification',
+  },
+  {
     title: '企业id',
-    align:"center",
-    dataIndex: 'enterpriseId'
-   },
+    align: 'center',
+    dataIndex: 'enterpriseId',
+  },
 ];
 //查询数据
 export const searchFormSchema: FormSchema[] = [
-	{
-      label: "形式",
-      field: 'shape',
-      component: 'JDictSelectTag',
-      componentProps:{
-          dictCode:"style_shape"
-      },
-      colProps: {span: 6},
- 	},
-	{
-      label: "编号",
-      field: 'nums',
-      component: 'Input',
-      colProps: {span: 6},
- 	},
-	{
-      label: "名称",
-      field: 'styleNames',
-      component: 'Input',
-      colProps: {span: 6},
- 	},
-	{
-      label: "规格",
-      field: 'specification',
-      component: 'Input',
-      colProps: {span: 6},
- 	},
-	{
-      label: "企业id",
-      field: 'enterpriseId',
-      component: 'Input',
-      colProps: {span: 6},
- 	},
-];
-//表单数据
-export const formSchema: FormSchema[] = [
-  {
-    label: '服装类型id',
-    field: 'clothsTypeId',
-    component: 'JPopup',
-    componentProps: ({ formActionType }) => {
-        const {setFieldsValue} = formActionType;
-        return{
-            setFieldsValue:setFieldsValue,
-            code:"cloths_type",
-            fieldConfig: [
-                { source: 'nums', target: 'nums' },
-                { source: 'type_name', target: 'type_name' },
-                { source: 'enterprise_id', target: 'enterprise_id' },
-                { source: 'pid', target: 'pid' },
-            ],
-            multi:true
-        }
-    },
-
-  },
   {
     label: '形式',
     field: 'shape',
     component: 'JDictSelectTag',
-    componentProps:{
-        dictCode:"style_shape"
-     },
-    dynamicRules: ({model,schema}) => {
-          return [
-                 { required: true, message: '请输入形式!'},
-          ];
-     },
+    componentProps: {
+      dictCode: 'style_shape',
+    },
+    colProps: { span: 6 },
   },
   {
     label: '编号',
     field: 'nums',
     component: 'Input',
-    dynamicRules: ({model,schema}) => {
-          return [
-                 { required: true, message: '请输入编号!'},
-          ];
-     },
+    colProps: { span: 6 },
   },
   {
     label: '名称',
     field: 'styleNames',
     component: 'Input',
-    dynamicRules: ({model,schema}) => {
-          return [
-                 { required: true, message: '请输入名称!'},
-          ];
-     },
+    colProps: { span: 6 },
+  },
+  {
+    label: '规格',
+    field: 'specification',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
+  {
+    label: '企业id',
+    field: 'enterpriseId',
+    component: 'Input',
+    colProps: { span: 6 },
+  },
+];
+//表单数据
+export const formSchema: FormSchema[] = [
+  {
+    label: '服装类型id',
+    field: 'clothstypeid',
+    component: 'JPopup',
+    componentProps: ({ formActionType }) => {
+      const { setFieldsValue } = formActionType;
+      return {
+        setFieldsValue: setFieldsValue,
+        code: 'cloths_type',
+        fieldConfig: [{ source: 'nums', target: 'clothstypeid' }],
+        multi: false,
+      };
+    },
+  },
+  {
+    label: '形式',
+    field: 'shape',
+    component: 'JDictSelectTag',
+    componentProps: {
+      dictCode: 'style_shape',
+    },
+    dynamicRules: ({ model, schema }) => {
+      return [{ required: true, message: '请输入形式!' }];
+    },
+  },
+  {
+    label: '编号',
+    field: 'nums',
+    component: 'Input',
+    dynamicRules: ({ model, schema }) => {
+      return [{ required: true, message: '请输入编号!' }];
+    },
+  },
+  {
+    label: '名称',
+    field: 'styleNames',
+    component: 'Input',
+    dynamicRules: ({ model, schema }) => {
+      return [{ required: true, message: '请输入名称!' }];
+    },
   },
   {
     label: '规格',
@@ -154,16 +142,14 @@ export const formSchema: FormSchema[] = [
   {
     label: '效果图',
     field: 'designSketch',
-     component: 'JImageUpload',
-     componentProps:{
-      },
+    component: 'JImageUpload',
+    componentProps: {},
   },
   {
     label: '主图',
     field: 'mainMap',
-     component: 'JImageUpload',
-     componentProps:{
-      },
+    component: 'JImageUpload',
+    componentProps: {},
   },
   {
     label: '测量方法',
@@ -200,22 +186,20 @@ export const formSchema: FormSchema[] = [
     field: 'enterpriseId',
     component: 'Input',
   },
-	// TODO 主键隐藏字段，目前写死为ID
-	{
-	  label: '',
-	  field: 'id',
-	  component: 'Input',
-	  show: false
-	},
+  // TODO 主键隐藏字段，目前写死为ID
+  {
+    label: '',
+    field: 'id',
+    component: 'Input',
+    show: false,
+  },
 ];
 
-
-
 /**
-* 流程表单调用这个方法获取formSchema
-* @param param
-*/
-export function getBpmFormSchema(_formData): FormSchema[]{
+ * 流程表单调用这个方法获取formSchema
+ * @param param
+ */
+export function getBpmFormSchema(_formData): FormSchema[] {
   // 默认和原始表单保持一致 如果流程中配置了权限数据，这里需要单独处理formSchema
   return formSchema;
 }
